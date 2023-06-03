@@ -153,10 +153,10 @@ install_basis () {
         echo "##  Installing GPU userspace driver  ##"
         echo "#######################################"
         echo ""
-        wget https://github.com/rockchip-linux/rk-rootfs-build/raw/master/packages/armhf/libmali/libmali-rk-midgard-t76x-r14p0-r0p0_1.6-1_armhf.deb
-        sudo dpkg -i libmali-rk-midgard-t76x-r14p0-r0p0_1.6-1_armhf.deb
-        wget https://github.com/rockchip-linux/rk-rootfs-build/raw/master/packages/armhf/libmali/libmali-rk-dev_1.6-1_armhf.deb
-        sudo dpkg -i libmali-rk-dev_1.6-1_armhf.deb
+        wget https://stpete-mirror.armbian.com/apt/pool/buster-desktop/libm/libmali-rk/libmali-rk-midgard-t76x-r14p0-r0p0_1.6-1-0armbian1_armhf.deb
+        sudo dpkg -i libmali-rk-midgard-t76x-r14p0-r0p0_1.6-1-0armbian1_armhf.deb
+        wget https://stpete-mirror.armbian.com/apt/pool/buster-desktop/libm/libmali-rk/libmali-rk-dev_1.6-1-0armbian1_armhf.deb
+        sudo dpkg -i libmali-rk-dev_1.6-1-0armbian1_armhf.deb
         rm *.deb
         
         echo ""
@@ -346,11 +346,11 @@ install_optional () {
             echo "##  Install OMXPLAYER  ##"
             echo "#####################################"
             echo ""
-            wget http://ftp.de.debian.org/debian/pool/main/o/openssl/libssl1.0.0_1.0.2l-1~bpo8+1_armhf.deb
-            sudo dpkg -i libssl1.0.0_1.0.2l-1~bpo8+1_armhf.deb
+            # wget http://ftp.de.debian.org/debian/pool/main/o/openssl/libssl1.0.0_1.0.2l-1~bpo8+1_armhf.deb
+            # sudo dpkg -i libssl1.0.0_1.0.2l-1~bpo8+1_armhf.deb
             sudo apt install -y libssh-4 fonts-freefont-ttf
-            wget http://omxplayer.sconde.net/builds/omxplayer_0.3.7~git20170130~62fb580_armhf.deb
-            sudo dpkg -i omxplayer_0.3.7~git20170130~62fb580_armhf.deb
+            wget https://github.com/magdesign/PocketVJ-CP-v3/raw/master/sync/omxplayer_0.3.7-git20170130-62fb580_armhf.deb
+            sudo dpkg -i omxplayer_0.3.7-git20170130-62fb580_armhf.deb
             rm *.deb
                             
             echo ""
@@ -395,6 +395,10 @@ install_optional () {
         echo "##############################"
         echo ""
         echo "Run 'sudo ~/RetroPie-Setup/retropie_setup.sh' and then reboot your system. Then you can install the packages from RetroPie-Setup."
+	sudo apt install -y git dialog unzip xmlstarlet
+	git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git
+	cd RetroPie-Setup
+	sudo ./retropie_setup.sh
 fi
 }
 
